@@ -50,6 +50,10 @@ func (ws *Wallets) GetAddresses() []string {
 
 // GetWallet returns a Wallet by its address
 func (ws Wallets) GetWallet(address string) Wallet {
+	wallet := ws.Wallets[address]
+	if wallet == nil {
+		log.Panic("ERROR: There is no file in your wallet")
+	}
 	return *ws.Wallets[address]
 }
 
